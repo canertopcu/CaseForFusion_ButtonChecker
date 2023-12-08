@@ -1,4 +1,4 @@
-using Assets.Scripts.Main;
+using Case.Main;
 using Fusion;
 using System;
 using TMPro;

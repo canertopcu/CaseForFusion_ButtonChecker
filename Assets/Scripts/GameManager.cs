@@ -1,4 +1,4 @@
-using Assets.Scripts.Main;
+using Case.Main;
 using Case;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,10 +28,10 @@ namespace Case
 
                             break;
                         case GameState.TryingToStart:
-                            SignalBus.BroadcastSignal(nameof(SignalType.Waiting));
+                            //SignalBus.BroadcastSignal(nameof(SignalType.Waiting));
                             break;
                         case GameState.GameStarted:
-                            SignalBus.BroadcastSignal(nameof(SignalType.GameModeActivated));
+                            //SignalBus.BroadcastSignal(nameof(SignalType.GameModeActivated));
                             break;
                         default:
                             break;

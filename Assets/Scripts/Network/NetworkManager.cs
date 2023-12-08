@@ -1,4 +1,4 @@
-using Assets.Scripts.Main;
+using Case.Main;
 using Fusion;
 using Fusion.Sockets;
 using System;
@@ -68,7 +68,8 @@ namespace Case.Network
 
         public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
         {
-            GameManager.Instance.CurrentGameState = GameState.GameStarted;
+            //GameManager.Instance.CurrentGameState = GameState.GameStarted;
+            SignalBus.BroadcastSignal(nameof(SignalType.GameModeActivated));
             if (runner.IsServer)
             {
                 Debug.Log("Player joined");
@@ -121,7 +122,8 @@ namespace Case.Network
 
         public void StartGame(Button startGameButton)
         {
-            GameManager.Instance.CurrentGameState = GameState.TryingToStart;
+           // GameManager.Instance.CurrentGameState = GameState.TryingToStart;
+            SignalBus.BroadcastSignal(nameof(SignalType.Waiting));
             if (_runner == null)
             {
                 StartGame(GameMode.AutoHostOrClient, startGameButton);
@@ -145,7 +147,8 @@ namespace Case.Network
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
             });
             startButton.gameObject.SetActive(false);
-            GameManager.Instance.CurrentGameState = GameState.GameStarted;
+            //GameManager.Instance.CurrentGameState = GameState.GameStarted;
+            SignalBus.BroadcastSignal(nameof(SignalType.GameModeActivated));
         }
     }
 }
